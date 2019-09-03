@@ -1,1 +1,1 @@
-docker inspect --f '{{ .NetworkSettings.IPAddress }}' Char
+docker-machine ip Char
