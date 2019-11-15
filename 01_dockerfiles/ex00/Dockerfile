@@ -1,9 +1,9 @@
 FROM alpine
 
 #Install vim & emacs
-RUN apk update && apk add \
-    vim
-    emacs
+RUN apk update && \
+    apk add vim && \
+    apk add emacs
 
 #Launch vim
 CMD ["vim"]
