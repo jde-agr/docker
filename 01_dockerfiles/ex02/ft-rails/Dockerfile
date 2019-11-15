@@ -6,7 +6,7 @@
 #    By: gfielder <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/08 12:29:18 by gfielder          #+#    #+#              #
-#    Updated: 2019/05/08 17:42:41 by gfielder         ###   ########.fr        #
+#    Updated: 2019/05/08 17:40:39 by gfielder         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,16 +29,34 @@
 # -----------------------------------------------------------------------------
 
 # ----- Notes -----------------------------------------------------------------
-# ft-rails:on-build needs to be an existing image first
-# Everything starting with ONBUILD in that image's dockerfile  will run right
-# after the FROM
-# 's' is an alias for 'server', so I substituted it to be clearer
-# -b binds an IP address
-# -p specifies port
+# https://hub.docker.com/_/ruby
+# https://guides.rubyonrails.org/getting_started.html
 #
-# Also fuck this exercise. I'm done.
+# db:migrate and db:seed are special rake commands; see
+#  https://dev.to/neshaz/how-to-use-rake-db-commands-in-the-correct-way--50o2
+# I assume rake has to run a general 'rake' just like make to build anything
+# else the application needs to run.
+# I use rake 12.3.1 because the app I'm packaging with submission to test
+# this requires it.
 # -----------------------------------------------------------------------------
 
-FROM ft-rails:on-build
-EXPOSE 3000
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+# Basic ruby image setup
+FROM ruby:latest
+RUN apt-get update -y && apt-get install -y \
+	build-essential \
+	libpq-dev \
+	nodejs \
+	sqlite3 \
+	gem
+RUN gem install bundler --no-document
+RUN gem install rails --no-document
+RUN gem install rake -v 12.3.1 --no-document
+
+# Run on ft-rails:on-build
+ONBUILD COPY app /opt/app
+ONBUILD WORKDIR /opt/app
+ONBUILD EXPOSE 3000
+ONBUILD RUN bundle install
+ONBUILD RUN rake _12.3.1_ db:migrate
+ONBUILD RUN rake _12.3.1_ db:seed
+ONBUILD RUN rake _12.3.1_
