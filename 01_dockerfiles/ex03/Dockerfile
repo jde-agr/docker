@@ -1,26 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Dockerfile                                         :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: gfielder <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/08 12:29:18 by gfielder          #+#    #+#              #
-#    Updated: 2019/05/09 16:03:56 by gfielder         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# ----- Prompt ----------------------------------------------------------------
-# Docker can be useful to test an application that’s still being developed
-# without polluting your libraries. You will have to design a Dockerfile that
-# gets the development version of Gitlab - Community Edition installs it with
-# all the dependencies and the necessary configurations, and launches the
-# application, all as it builds. The container will be deemed valid if you can
-# access the web client, create users and interact via GIT with this container
-# (HTTPS and SSH). Obviously, you are not allowed to use the official container
-# from Gitlab, it would be a shame...
-# -----------------------------------------------------------------------------
-
 # ----- Notes -----------------------------------------------------------------
 # Installing and Configuring Gitlab
 # https://docs.gitlab.com/omnibus/README.html#installation-and-configuration-using-omnibus-package
@@ -53,7 +30,7 @@
 # I tried anyway, but docker isn't set up to work this way as far as I can
 # tell, and trying to run a separate SSHD is more difficult than this exercise
 # seems to intend.
-# In any case, `docker-exec -it [container] sh` is an equivalent to SSH into
+# In any case, `docker exec -it [container] sh` is an equivalent to SSH into
 # the container. Docker also has another alternative here:
 # https://docs.docker.com/engine/reference/commandline/attach/
 # -----------------------------------------------------------------------------
