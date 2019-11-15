@@ -5,8 +5,6 @@
 # 's' is an alias for 'server', so I substituted it to be clearer
 # -b binds an IP address
 # -p specifies port
-#
-# Also fuck this exercise. I'm done.
 # -----------------------------------------------------------------------------
 
 FROM ft-rails:on-build
