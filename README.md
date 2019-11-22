@@ -8,6 +8,9 @@
 ## Description
 Docker ecosystem. Creating and handling containers with Dockerfiles.
 
+## Overall Achievements
+![Screenshot](docs/overview.png)
+
 ## File Structure
 ```
 docker
@@ -19,32 +22,36 @@ docker
 │       01-34 (Docker shell commands)   
 │   
 └───01_dockerfiles
-    │
-    └───ex00
-    │
-    │   Dockerfile
-    │
-    └───ex01
-    │
-    │   Dockerfile
-    │   run.sh
-    │
-    └───ex02
-    │   │
-    │   └───app (Basic ruby website)
-    │   │
-    │   └───ft-rails
-    │
-    │       Dockerfile
-    │
-    │   Dockerfile
-    │   reset.sh
-    │   run.sh
-    │
-    └───ex03
-     
-        Dockerfile
-        reset.sh
-        run.sh
-     
+│   │
+│   └───ex00
+│   │
+│   │   Dockerfile
+│   │
+│   └───ex01
+│   │
+│   │   Dockerfile
+│   │   run.sh
+│   │
+│   └───ex02
+│   │   │
+│   │   └───app (Basic ruby website)
+│   │   │
+│   │   └───ft-rails
+│   │
+│   │       Dockerfile
+│   │
+│   │   Dockerfile
+│   │   reset.sh
+│   │   run.sh
+│   │
+│   └───ex03
+│    
+│       Dockerfile
+│       reset.sh
+│       run.sh
+│   
+└───docs
+
+    docker.en.pdf
+    overview.png
 ```
